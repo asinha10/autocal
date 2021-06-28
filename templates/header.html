@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet">
+    <title>AutoCal</title>
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
+  <div class="container-fluid">
+    <h1>AutoCal</h1>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto px-3 mb-2 mb-lg-0">
+        <li class="nav-item px-3">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('get_index') }}">Home</a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link" href="{{ url_for('get_pdf') }}">FAQs</a>
+        </li>
+        <li class="nav-item dropdown px-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Upload
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{{ url_for('upload_holidays') }}">Holiday Calendar</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('upload_calendar') }}">Calendar Definition</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown px-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Download
+          </a>
+          <ul class="dropdown-menu px-3" aria-labelledby="navbarDropdown2">
+            <li><a class="dropdown-item" href="{{ url_for('get_cal_xl') }}">Calendar XLS</a></li>
+            <li><a class="dropdown-item disabled" href="#">Calendar json</a></li>
+            <li><a class="dropdown-item disabled" href="#">Calendar text</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+
+  <main>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li><p class="err-msg"><i class="bi bi-x-circle"></i> {{ message }}</p></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+  {% block main %}{% endblock %}
+
+  </main>

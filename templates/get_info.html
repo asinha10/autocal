@@ -1,0 +1,32 @@
+{% include "header.html" %}
+
+<section id="hero1" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-7">
+                <h4>First thing's first:</h4>
+                <hr>
+                <h5> <i class="bi bi-cloud-arrow-down-fill"></i> Download "How-To" pdf file to understand the format <a href="{{ url_for('get_pdf') }}">here </a> </h5>
+                <hr>
+                <h5> <i class="bi bi-cloud-arrow-up-fill"></i> Create and upload a Calendar csv file. Download <a href="{{ url_for('get_sample_cal') }}">sample</a> </h5>
+                <hr>
+                <h5> <i class="bi bi-cloud-arrow-up-fill"></i> Create and upload Holiday csv file. Download <a href="{{ url_for('get_sample_hol') }}">sample</a> </h5>
+                <hr>
+                <h5> <i class="bi bi-cloud-arrow-down-fill"></i> Download the Calendar xls file from Navigation Bar link </h5>
+                <hr>
+
+            </div>
+            <div class="col-lg-5">
+                <img src="static/faq.jpg" class="img-fluid rounded" alt="" border="0">
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+{% include "footer.html" %}

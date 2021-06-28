@@ -1,0 +1,10 @@
+Values,p2bmthly,pap227,papbimth,papbm11,pardly
+frequency,work_days,calendar_days,both_days,weekdays,work_days
+runs_on_wd,"2",,7,,"0"
+skip_workday,"N",,,,"4,6"
+runs_on_cd,,"6,21",25,,
+move_saturday,,0,0,,
+move_sunday,,-1,-1,,
+runs_specific_days,,,,"W-SUN",
+days_range,,,,1,
+runs_on_quarter_close,,,,,

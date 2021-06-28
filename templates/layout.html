@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/style.css" rel="stylesheet">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+<div>
+  <header>
+  <nav class="navbar sticky-top navbar-expand-lg bg-dark navbar-dark">
+  <div class="container-fluid">
+    <h1>AutoCal</h1>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto px-3 mb-2 mb-lg-0">
+        <li class="nav-item px-3">
+          <a class="nav-link active" aria-current="page" href="{{ url_for('get_index') }}">Home</a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link" href="#">FAQs</a>
+        </li>
+        <li class="nav-item dropdown px-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Upload
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{{ url_for('upload_holidays') }}">Holiday Calendar</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('upload_calendar') }}">Calendar Definition</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown px-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Download
+          </a>
+          <ul class="dropdown-menu px-3" aria-labelledby="navbarDropdown2">
+            <li><a class="dropdown-item" href="{{ url_for('get_cal_xl') }}">Calendar XLS</a></li>
+            <li><a class="dropdown-item" href="#">Calendar json</a></li>
+            <li><a class="dropdown-item" href="#">Calendar text</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  </nav>
+  </header>
+  <main>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li><p>{{ message }}</p></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+  {% endwith %}
+  {% block main %}{% endblock %}
+
+  </main>
+
+  <footer class="pt-5 my-5 text-muted border-top">
+    Created by Aakash Sinha; 2021
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+</body>
+</html>

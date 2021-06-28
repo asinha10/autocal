@@ -1,0 +1,30 @@
+{% include "header.html" %}
+
+<section id="hero" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-6">
+                {% block main %}
+                <form action="/upload-calendar" enctype="multipart/form-data" method="POST">
+                <div class="py-2">
+                    <label for="formFileLg" class="form-label"><h2>Upload Calendar definition</h2></label>
+                <input class="form-control form-control-lg" name="file" id="formFileLg" type="file">
+                </div>
+                <button type="submit" class="btn btn-primary">Upload file</button>
+                </form>
+                {% endblock %}
+            </div>
+            <div class="col-lg-6">
+                <img src="static/bg-2.jpg" class="img-fluid rounded animated" alt="" border="0">
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+{% include "footer.html" %}
