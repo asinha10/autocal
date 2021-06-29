@@ -217,8 +217,9 @@ def generate_cal_f(holidays):
     #################################################################
 
     # read calendar definition based on calendar names in the file
-    cal_data = pd.read_csv("definitions/calendar_data.csv", na_values='null', keep_default_na=False)
+    #cal_data = pd.read_csv("definitions/calendar_data.csv", na_values='null', keep_default_na=False)
 
+    cal_data = pd.read_csv("/app/definitions/calendar_data.csv", na_values='null', keep_default_na=False)
     names_list = cal_data.columns.values.tolist()
     names_list.pop(0)
 
@@ -251,7 +252,8 @@ def generate_cal_f(holidays):
 
 # Create a Custom Calendar Object using Custom holiday list
 try:
-    holiday_data = pd.read_csv('definitions/HolidayList.csv')
+    # holiday_data = pd.read_csv('definitions/HolidayList.csv')
+    holiday_data = pd.read_csv('/app/definitions/HolidayList.csv')
 except FileNotFoundError as err_msg:
     print(f'{err_msg} - Did you forget something?')
 else:
