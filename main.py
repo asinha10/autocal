@@ -4,11 +4,13 @@ import pathlib
 import os
 import cal_operations
 
+ALLOWED_EXTENSIONS = {'csv'}
+#UPLOAD_FOLDER = pathlib.Path.cwd().joinpath('definitions')
+UPLOAD_FOLDER = os.path.dirname(os.path.abspath(__file__))
+
 app = Flask(__name__)
 app.secret_key = 'secret'
-
-ALLOWED_EXTENSIONS = {'csv'}
-UPLOAD_FOLDER = pathlib.Path.cwd().joinpath('definitions')
+DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -22,7 +24,7 @@ def get_upload_file(file):
         filename = secure_filename(file.filename)
         filepath = os.path.join(app.config['UPLOAD_FOLDER'])
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        flash(f'File uploaded successfully at {filepath}')
+        flash(f'File uploaded successfully at {filepath}/{filename}')
         return redirect(request.url)
 
     return redirect(request.url)
