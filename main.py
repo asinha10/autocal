@@ -20,11 +20,13 @@ def allowed_file(filename):
 def get_upload_file(file):
     if file and allowed_file(file.filename):
         filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'])
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        flash('File uploaded successfully')
+        flash(f'File uploaded successfully at {filepath}')
         return redirect(request.url)
 
     return redirect(request.url)
+
 
 @app.route("/")
 def get_index():
